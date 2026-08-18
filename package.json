@@ -1,7 +1,7 @@
 {
-  "name": "shan-portfolio",
+  "name": "rajeev-portfolio",
   "version": "1.0.0",
-  "description": "Shan - Digital Agency & Creative Portfolio",
+  "description": "Rajeev Kumar - Frontend Developer & UI/UX Specialist Portfolio",
   "scripts": {
     "dev": "live-server --port=3000 --open=index.html",
     "start": "live-server --port=3000 --open=index.html"
@@ -9,7 +9,7 @@
   "devDependencies": {
     "live-server": "^1.2.2"
   },
-  "keywords": ["portfolio", "html", "css", "javascript"],
-  "author": "Shajith (Shan)",
+  "keywords": ["portfolio", "angular", "frontend", "typescript", "firebase", "ui-ux"],
+  "author": "Rajeev Kumar Nalluri",
   "license": "MIT"
 }
