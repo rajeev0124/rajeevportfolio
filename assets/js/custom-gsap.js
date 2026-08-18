@@ -56,6 +56,17 @@
       normalizeScroll: false,
       ignoreMobileResize: true,
     });
+
+    $('a[href^="#"]').on("click", function (event) {
+      const hash = this.getAttribute("href");
+      if (hash && hash.length > 1) {
+        const target = $(hash);
+        if (target.length) {
+          event.preventDefault();
+          smoother.scrollTo(target[0], true, "top top");
+        }
+      }
+    });
   }
 
   ////////////////////////////////////////////////////

@@ -507,6 +507,7 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* Custom Checkbox & Radio Css Start */
@@ -2575,6 +2576,7 @@ input:focus-visible {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
 }
 .line-clamp-2 {
   display: -webkit-box;
@@ -2582,6 +2584,7 @@ input:focus-visible {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 .line-clamp-3 {
   display: -webkit-box;
@@ -2589,6 +2592,7 @@ input:focus-visible {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 .line-clamp-4 {
   display: -webkit-box;
@@ -2596,6 +2600,7 @@ input:focus-visible {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
 }
 
 /* Line Clamp End */
@@ -8195,6 +8200,8 @@ body.tw-magic-cursor #magic-cursor {
 .banner-three-title {
   font-size: 397px;
   line-height: 83%;
+  text-align: center;
+  width: 100%;
 }
 @media screen and (max-width: 1799px) {
   .banner-three-title {
