@@ -8175,6 +8175,7 @@ body.tw-magic-cursor #magic-cursor {
 .banner-three-area {
   background: #f5f5f5;
   padding-block: 200px 100px;
+  overflow: hidden;
 }
 @media screen and (max-width: 1199px) {
   .banner-three-area {
@@ -8422,10 +8423,22 @@ body.tw-magic-cursor #magic-cursor {
 }
 .banner-three-man {
   inset-block-end: 27%;
+  width: 35%;
+  max-width: 420px;
+}
+.banner-three-man img {
+  width: 100%;
+  height: auto;
+}
+@media screen and (max-width: 991px) {
+  .banner-three-man {
+    width: 45%;
+  }
 }
 @media screen and (max-width: 575px) {
   .banner-three-man {
     inset-block-end: 38%;
+    width: 60%;
   }
 }
 
