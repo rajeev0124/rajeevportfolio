@@ -7,6 +7,9 @@
 A premium personal portfolio built with modern frontend technologies, smooth animations, and a clean UI to showcase projects, skills, and experience.
 
 <p>
+  <a href="https://rajeevportfolio-sigma.vercel.app">
+    <img src="https://img.shields.io/badge/Live-Demo-00C7B7?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
   <a href="https://github.com/rajeev0124/rajeevportfolio">
     <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" />
   </a>
@@ -19,9 +22,9 @@ A premium personal portfolio built with modern frontend technologies, smooth ani
 
 ---
 
-## ✨ Preview
+## ✨ Live Preview
 
-> A modern portfolio crafted to leave a strong first impression with smooth animations, responsive layouts, elegant typography, and a premium user experience.
+> 🌐 **Live Website:** **[https://rajeevportfolio-sigma.vercel.app](https://rajeevportfolio-sigma.vercel.app)**
 
 ### 💻 GitHub Repository
 
