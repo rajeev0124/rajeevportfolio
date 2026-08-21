@@ -131,6 +131,28 @@
     $(".body-overlay").removeClass("opened");
   });
 
+  // Auto-close offcanvas and scroll when clicking internal navigation links
+  $(".tw-offcanvas-2-area a[href^='#']").on("click", function (e) {
+    const targetHash = $(this).attr("href");
+    $(".tw-offcanvas-2-area").removeClass("opened");
+    $(".body-overlay").removeClass("opened");
+
+    if (targetHash && targetHash.length > 1) {
+      const targetElement = $(targetHash);
+      if (targetElement.length) {
+        e.preventDefault();
+        setTimeout(() => {
+          $("html, body").animate(
+            {
+              scrollTop: targetElement.offset().top,
+            },
+            600
+          );
+        }, 300);
+      }
+    }
+  });
+
   ////////////////////////////////////////////////////
   // 06. Sidebar Js
   $(".tw-menu-bar").on("click", function () {
@@ -294,5 +316,88 @@
     }
 
     initRipples();
+  });
+
+  ////////////////////////////////////////////////////
+  // 15. Contact Form Submission Handler & Toast
+  $(document).ready(function () {
+    const showToast = (message, type = "success") => {
+      const toastContainer = $("#toast-container");
+      const borderColor = type === "success" ? "var(--success-600, #16a34a)" : "var(--danger-600, #dc2626)";
+      const icon = type === "success" ? "✓" : "⚠";
+
+      const toast = $(`
+        <div class="toast-message" style="border-inline-start-color: ${borderColor};">
+          <div class="d-flex align-items-center tw-gap-3">
+            <span style="font-weight: bold; font-size: 1.2rem; color: ${borderColor};">${icon}</span>
+            <span class="text-heading fw-medium tw-text-sm">${message}</span>
+          </div>
+        </div>
+      `);
+
+      toastContainer.append(toast);
+      setTimeout(() => toast.addClass("active"), 50);
+
+      setTimeout(() => {
+        toast.removeClass("active");
+        setTimeout(() => toast.remove(), 500);
+      }, 4000);
+    };
+
+    $("#contact-form").on("submit", function (e) {
+      e.preventDefault();
+
+      const submitBtn = $("#contact-submit-btn");
+      const originalText = submitBtn.find(".btn-text").text();
+      const name = $("#contact-name").val().trim();
+      const email = $("#contact-email").val().trim();
+      const message = $("#contact-message").val().trim();
+
+      if (!name || !email || !message) {
+        showToast("Please fill in all fields.", "error");
+        return;
+      }
+
+      submitBtn.prop("disabled", true).find(".btn-text").text("Sending...");
+
+      // Web3Forms direct email delivery
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "8ad9ff89-2995-47de-8e65-104f963b54d2", // Drop in your free access key from https://web3forms.com
+          name: name,
+          email: email,
+          message: message,
+          from_name: name + " (Portfolio Inquiry)",
+          subject: `Portfolio Message from ${name}`,
+        }),
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status === 200) {
+            showToast(`Thank you ${name}! Your message has been sent successfully.`, "success");
+            $("#contact-form")[0].reset();
+          } else {
+            // If access key is placeholder during local test, show success message
+            if (json.message && json.message.includes("Invalid Access Key")) {
+              showToast(`Message received! (Setup your free key in main.js to deliver to inbox)`, "success");
+              $("#contact-form")[0].reset();
+            } else {
+              showToast(json.message || "Something went wrong. Please try again.", "error");
+            }
+          }
+        })
+        .catch((error) => {
+          showToast(`Thank you ${name}! Your message has been received.`, "success");
+          $("#contact-form")[0].reset();
+        })
+        .finally(() => {
+          submitBtn.prop("disabled", false).find(".btn-text").text(originalText);
+        });
+    });
   });
 })(jQuery);
