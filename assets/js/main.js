@@ -407,15 +407,7 @@
     const $target = $(".banner-three-title");
     if (!$target.length || typeof gsap === "undefined") return;
 
-    const words = [
-      "developer",
-      "ui/ux designer",
-      "frontend lead",
-      "angular pro",
-      "creative dev"
-    ];
-
-    let currentWordIndex = 0;
+    const word = "developer";
     const letterDuration = 0.6;
     const staggerDelay = 0.08;
     const exitStaggerDelay = 0.04;
@@ -432,7 +424,7 @@
       whiteSpace: "nowrap"
     });
 
-    function renderAndAnimateWord(word, isFirstRun = false) {
+    function renderAndAnimateWord() {
       $target.empty();
       const letters = word.split("");
       const letterSpans = [];
@@ -449,7 +441,7 @@
         letterSpans.push($span[0]);
       });
 
-      // Enter Animation: RotateX 90deg -> 0deg, Y: 25 -> 0, blur(8px) -> blur(0px), Opacity: 0 -> 1
+      // Enter Animation: RotateX 90deg -> 0deg, Y: 35 -> 0, blur(8px) -> blur(0px), Opacity: 0 -> 1
       gsap.fromTo(
         letterSpans,
         {
@@ -470,7 +462,7 @@
       );
     }
 
-    function transitionToNextWord() {
+    function cycleFlipFade() {
       const currentSpans = $target.find("span").toArray();
 
       // Exit Animation: RotateX 0deg -> -90deg, Y: 0 -> -35, blur(0px) -> blur(8px), Opacity: 1 -> 0
@@ -483,16 +475,15 @@
         stagger: exitStaggerDelay,
         ease: "power2.in",
         onComplete: () => {
-          currentWordIndex = (currentWordIndex + 1) % words.length;
-          renderAndAnimateWord(words[currentWordIndex]);
+          renderAndAnimateWord();
         }
       });
     }
 
     // Initial render
-    renderAndAnimateWord(words[0], true);
+    renderAndAnimateWord();
 
-    // Cycle through words
-    setInterval(transitionToNextWord, wordInterval);
+    // Continuous Flip-Fade Cycle for "developer"
+    setInterval(cycleFlipFade, wordInterval);
   });
 })(jQuery);
