@@ -8179,79 +8179,88 @@ body.tw-magic-cursor #magic-cursor {
 
 .banner-three-area {
   background: #f5f5f5;
-  padding-block: 200px 100px;
+  padding-block: 150px 100px;
   overflow: hidden;
 }
 @media screen and (max-width: 1199px) {
   .banner-three-area {
-    padding-block: 300px 100px;
+    padding-block: 220px 100px;
   }
 }
 @media screen and (max-width: 991px) {
   .banner-three-area {
-    padding-block: 200px 100px;
+    padding-block: 160px 100px;
   }
 }
 @media screen and (max-width: 767px) {
   .banner-three-area {
-    padding-block: 120px 70px;
+    padding-block: 100px 70px;
   }
 }
 .banner-three-title {
-  font-size: 280px;
+  font-size: 260px;
   line-height: 85%;
   text-align: center;
   width: 100%;
   position: relative;
   z-index: 2;
-  margin: 0 auto;
+  margin: -40px auto 10px auto;
   letter-spacing: -0.02em;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 @media screen and (max-width: 1799px) {
   .banner-three-title {
-    font-size: 250px;
+    font-size: 235px;
+    margin: -35px auto 10px auto;
   }
 }
 @media screen and (max-width: 1699px) {
   .banner-three-title {
-    font-size: 230px;
+    font-size: 215px;
+    margin: -30px auto 10px auto;
   }
 }
 @media screen and (max-width: 1499px) {
   .banner-three-title {
-    font-size: 200px;
+    font-size: 190px;
+    margin: -25px auto 10px auto;
   }
 }
 @media screen and (max-width: 1399px) {
   .banner-three-title {
-    font-size: 180px;
+    font-size: 170px;
+    margin: -20px auto 10px auto;
   }
 }
 @media screen and (max-width: 1199px) {
   .banner-three-title {
-    font-size: 150px;
+    font-size: 140px;
+    margin: -15px auto 10px auto;
   }
 }
 @media screen and (max-width: 991px) {
   .banner-three-title {
-    font-size: 110px;
+    font-size: 105px;
+    margin: -10px auto 10px auto;
   }
 }
 @media screen and (max-width: 767px) {
   .banner-three-title {
-    font-size: 72px;
-    margin-block-end: 20px;
+    font-size: 70px;
+    margin: 0 auto 15px auto;
   }
 }
 @media screen and (max-width: 575px) {
   .banner-three-title {
-    font-size: 54px;
-    margin-block-end: 25px;
+    font-size: 52px;
+    margin: 0 auto 20px auto;
   }
 }
 @media screen and (max-width: 424px) {
   .banner-three-title {
-    font-size: 46px;
+    font-size: 44px;
   }
 }
 .banner-three-left {
