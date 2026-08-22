@@ -8198,54 +8198,60 @@ body.tw-magic-cursor #magic-cursor {
   }
 }
 .banner-three-title {
-  font-size: 397px;
-  line-height: 83%;
+  font-size: 280px;
+  line-height: 85%;
   text-align: center;
   width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  letter-spacing: -0.02em;
 }
 @media screen and (max-width: 1799px) {
   .banner-three-title {
-    font-size: 370px;
+    font-size: 250px;
   }
 }
 @media screen and (max-width: 1699px) {
   .banner-three-title {
-    font-size: 350px;
+    font-size: 230px;
   }
 }
 @media screen and (max-width: 1499px) {
   .banner-three-title {
-    font-size: 307px;
+    font-size: 200px;
   }
 }
 @media screen and (max-width: 1399px) {
   .banner-three-title {
-    font-size: 260px;
+    font-size: 180px;
   }
 }
 @media screen and (max-width: 1199px) {
   .banner-three-title {
-    font-size: 216px;
+    font-size: 150px;
   }
 }
 @media screen and (max-width: 991px) {
   .banner-three-title {
-    font-size: 166px;
+    font-size: 110px;
   }
 }
 @media screen and (max-width: 767px) {
   .banner-three-title {
-    font-size: 123px;
+    font-size: 72px;
+    margin-block-end: 20px;
   }
 }
 @media screen and (max-width: 575px) {
   .banner-three-title {
-    font-size: 88px;
+    font-size: 54px;
+    margin-block-end: 25px;
   }
 }
 @media screen and (max-width: 424px) {
   .banner-three-title {
-    font-size: 78px;
+    font-size: 46px;
   }
 }
 .banner-three-left {
@@ -8432,6 +8438,8 @@ body.tw-magic-cursor #magic-cursor {
   inset-block-end: 27%;
   width: 35%;
   max-width: 420px;
+  z-index: 1;
+  pointer-events: none;
 }
 .banner-three-man img {
   width: 100%;
@@ -8439,13 +8447,27 @@ body.tw-magic-cursor #magic-cursor {
 }
 @media screen and (max-width: 991px) {
   .banner-three-man {
-    width: 45%;
+    width: 40%;
+    inset-block-end: 22%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .banner-three-man {
+    width: 50%;
+    inset-block-end: 18%;
+    opacity: 0.85;
   }
 }
 @media screen and (max-width: 575px) {
   .banner-three-man {
-    inset-block-end: 38%;
-    width: 60%;
+    position: relative !important;
+    inset-block-end: auto !important;
+    top: 0 !important;
+    width: 70%;
+    max-width: 280px;
+    margin: 0 auto 20px auto;
+    transform: none !important;
+    left: auto !important;
   }
 }
 
