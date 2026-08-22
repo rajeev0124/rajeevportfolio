@@ -400,4 +400,99 @@
         });
     });
   });
+
+  ////////////////////////////////////////////////////
+  // 16. VengenceUI Flip-Fade 3D Text Animation for "developer"
+  $(document).ready(function () {
+    const $target = $(".banner-three-title");
+    if (!$target.length || typeof gsap === "undefined") return;
+
+    const words = [
+      "developer",
+      "ui/ux designer",
+      "frontend lead",
+      "angular pro",
+      "creative dev"
+    ];
+
+    let currentWordIndex = 0;
+    const letterDuration = 0.6;
+    const staggerDelay = 0.08;
+    const exitStaggerDelay = 0.04;
+    const wordInterval = 3200; // ms
+
+    // Set 3D perspective
+    $target.css({
+      perspective: "1000px",
+      transformStyle: "preserve-3d",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      overflow: "hidden",
+      whiteSpace: "nowrap"
+    });
+
+    function renderAndAnimateWord(word, isFirstRun = false) {
+      $target.empty();
+      const letters = word.split("");
+      const letterSpans = [];
+
+      letters.forEach((char) => {
+        const $span = $("<span></span>")
+          .text(char === " " ? "\u00A0" : char)
+          .css({
+            display: "inline-block",
+            transformStyle: "preserve-3d",
+            willChange: "transform, opacity, filter"
+          });
+        $target.append($span);
+        letterSpans.push($span[0]);
+      });
+
+      // Enter Animation: RotateX 90deg -> 0deg, Y: 25 -> 0, blur(8px) -> blur(0px), Opacity: 0 -> 1
+      gsap.fromTo(
+        letterSpans,
+        {
+          rotateX: 90,
+          y: 35,
+          opacity: 0,
+          filter: "blur(8px)"
+        },
+        {
+          rotateX: 0,
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: letterDuration,
+          stagger: staggerDelay,
+          ease: "power3.out"
+        }
+      );
+    }
+
+    function transitionToNextWord() {
+      const currentSpans = $target.find("span").toArray();
+
+      // Exit Animation: RotateX 0deg -> -90deg, Y: 0 -> -35, blur(0px) -> blur(8px), Opacity: 1 -> 0
+      gsap.to(currentSpans, {
+        rotateX: -90,
+        y: -35,
+        opacity: 0,
+        filter: "blur(8px)",
+        duration: letterDuration * 0.67,
+        stagger: exitStaggerDelay,
+        ease: "power2.in",
+        onComplete: () => {
+          currentWordIndex = (currentWordIndex + 1) % words.length;
+          renderAndAnimateWord(words[currentWordIndex]);
+        }
+      });
+    }
+
+    // Initial render
+    renderAndAnimateWord(words[0], true);
+
+    // Cycle through words
+    setInterval(transitionToNextWord, wordInterval);
+  });
 })(jQuery);
